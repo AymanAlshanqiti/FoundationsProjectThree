@@ -37,6 +37,6 @@ class Club():
             ages += member.age
 
         average_age = ages / len(self.member_list)
-        print("Average age in this club: %s " % average_age)
+        print("\n Average age in this club: %d years" % average_age)
 
 

@@ -8,7 +8,6 @@ my_bio = "Hi there"
 myself = Person(my_name, my_bio, my_age)
 
 def introduction():
-    # my_name = input("Enter your name:\n")
 
     print("Hello, %s. Welcome to our portal." % my_name)
     print("--------------------------------------------\n")
@@ -24,7 +23,7 @@ def introduction():
 
 
 def options():
-    # your code goes here!
+
     user_choise = input()
     if user_choise == "1":
         create_club()
@@ -59,6 +58,9 @@ def create_club():
             user_club.recruit_member(population[user_members_choise-1])
             user_members_choise = int(input())
 
+        else:
+            user_members_choise = int(input("Sorry, this user isn't in our planet!, please try one of the list: "))
+
         user_club.assign_president(myself)
 
     else:
@@ -78,17 +80,20 @@ def view_clubs():
     
 
 def view_club_members():
-    # your code goes here!
-    pass
+
+    view_clubs()
+    user_review_club = input("Enter the name of the club whose member's you'd like to see: ")
+
+    for club in clubs:
+        if user_review_club == club.name:
+            club.print_member_list()
+
     
 
 def join_clubs():
 
-    print("Existing clubs:")
-    for club in clubs:
-        print("\n\t NAME: %s \n\t DESCRIPTION: %s \n\t MEMBERS: %s" % (club.name, club.description , len(club.member_list)))
-
-    user_choosen_club = input("\n Enter the name of the club you'd like to join: ")
+    view_clubs()
+    user_choosen_club = input("Enter the name of the club you'd like to join: ")
 
     for club in clubs:
         if user_choosen_club == club.name:
