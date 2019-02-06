@@ -2,9 +2,9 @@
 from data import  population, clubs
 from components import Club, Person
 
-my_name = "Ayman"
-my_age = 28
-my_bio = "Hi there"
+my_name = input("What is your name? \n")
+my_age = input("How old are you? \n")
+my_bio = input("Tell as something about your briefly.. \n")
 myself = Person(my_name, my_bio, my_age)
 
 def introduction():
@@ -35,6 +35,7 @@ def options():
         view_club_members()
     elif user_choise == "-1":
         print("It nice to chat with you %s, see you soon." % my_name)
+        quit()
     
 
 def create_club():
@@ -70,6 +71,8 @@ def create_club():
         print("Members:")
         user_club.print_member_list()
 
+    options()
+
 
 def view_clubs():
 
@@ -85,10 +88,10 @@ def view_club_members():
     user_review_club = input("Enter the name of the club whose member's you'd like to see: ")
 
     for club in clubs:
-        if user_review_club == club.name:
+        if user_review_club.lower() == club.name.lower():
             club.print_member_list()
 
-    
+    options()
 
 def join_clubs():
 
@@ -101,6 +104,8 @@ def join_clubs():
             print("%s just joind %s " % (myself.name, user_choosen_club))
             print("--------------------------------------------")
             return True
+
+    options()
 
 def application():
     introduction()
