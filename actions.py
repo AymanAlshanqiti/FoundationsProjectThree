@@ -74,6 +74,7 @@ def view_clubs():
     print("Existing clubs:")
     for club in clubs:
         print("\n\t NAME: %s \n\t DESCRIPTION: %s \n\t MEMBERS: %s" % (club.name, club.description , len(club.member_list)))
+    print("--------------------------------------------")
     
 
 def view_club_members():
@@ -87,8 +88,14 @@ def join_clubs():
     for club in clubs:
         print("\n\t NAME: %s \n\t DESCRIPTION: %s \n\t MEMBERS: %s" % (club.name, club.description , len(club.member_list)))
 
-    user_choosen_club = input("Enter the name of the club you'd like to join: ")
-    
+    user_choosen_club = input("\n Enter the name of the club you'd like to join: ")
+
+    for club in clubs:
+        if user_choosen_club == club.name:
+            club.recruit_member(myself)
+            print("%s just joind %s " % (myself.name, user_choosen_club))
+            print("--------------------------------------------")
+            return True
 
 def application():
     introduction()
